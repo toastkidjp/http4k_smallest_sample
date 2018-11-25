@@ -22,9 +22,9 @@ repositories {
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
-    compile group: "org.http4k", name: "http4k-core", version: "3.102.0"
+    implementation group: "org.http4k", name: "http4k-core", version: "3.102.0"
 }
 
 jar {
