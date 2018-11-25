@@ -9,8 +9,12 @@ import org.http4k.routing.routes
 import org.http4k.server.SunHttp
 import org.http4k.server.asServer
 
-fun main(args: Array<String>) {
-    routes("/hello" bind Method.GET to { _: Request -> Response(OK).body("hello!!") })
-            .asServer(SunHttp(8000))
-            .start()
+object Main {
+
+    @JvmStatic
+    fun main(args: Array<String>) {
+        routes("/hello" bind Method.GET to { _: Request -> Response(OK).body("Hello!") })
+                .asServer(SunHttp(8000))
+                .start()
+    }
 }

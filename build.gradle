@@ -1,7 +1,10 @@
 apply plugin: 'kotlin'
+apply plugin: 'application'
+
+mainClassName = "jp.toastkid.http4k.example.Main"
 
 group 'jp.toastkid'
-version '1.0-SNAPSHOT'
+version '0.0.1'
 
 buildscript {
     ext.kotlin_version = '1.3.0'
@@ -19,6 +22,15 @@ repositories {
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
     compile group: "org.http4k", name: "http4k-core", version: "3.102.0"
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class'   : mainClassName
+    }
+    destinationDir = projectDir
+    from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
 }
